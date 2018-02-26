@@ -121,13 +121,6 @@ void main (void){
     //usart_Transmit((uint8_t) readADC(0)>>8);
     //usart_Transmit('C');
         _delay_ms(2000);
-    //usart_Transmit('G');
-    //usart_Transmit('O');
-    //usart_Transmit('K');
-    //usart_Transmit('A');
-    //usart_Transmit('Y');
-    //usart_Transmit('\n');
-    //usart_Transmit(0x13);
 
   }
 
