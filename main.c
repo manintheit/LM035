@@ -71,8 +71,7 @@ void initADC(void)
 
 uint16_t readADC(uint8_t ADCchannel){
   //Safety bit for ADC0 0xF0, ADC1 0xF1
-  ADMUX &= ADCchannel; //ADC channel select ADC0 in this case.
-  //ADMUX = (ADMUX & 0xF0) | (ADCchannel & 0x0F);
+  ADMUX = (ADMUX & 0xF0) | (ADCchannel & 0x0F);
   ADCSRA |= (1 << ADSC);//start conversation
   while(ADCSRA & (1<<ADSC));
   return ADC;
