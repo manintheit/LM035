@@ -1,4 +1,3 @@
-//Predefined values Xtall and BaudRate
 //Written for atmega328P
 #ifndef F_CPU
   #define F_CPU 8000000UL
@@ -8,19 +7,18 @@
 #endif
 #define MYUBRR  (F_CPU/(16UL * BAUD)) - 1
 #define ADC0 0xF0
-#define ADC0 0xF1
+#define ADC1 0xF1
 #define AVCC 5000 //5V = 5000mV
 #define PRECISION 1024
 #define T (AVCC/PRECISION)
 //##################################
 #include <avr/io.h>
 #include <util/delay.h>
-//#include <stdio.h>
-//
-uint8_t msg[] = "Hello World!\n";
+
+
 void initUSART(void);
 void usart_Transmit(uint8_t data);
-void uart_Message(uint8_t* msg);
+void usart_Message(uint8_t* msg);
 uint8_t  usart_Receive(void);
 
 void initADC(void);
@@ -52,7 +50,7 @@ void usart_Transmit(uint8_t data){
 
 }
 
-void uart_Message(uint8_t* msg){
+void usart_Message(uint8_t* msg){
 
   while(*msg){
     usart_Transmit(*msg);
@@ -92,7 +90,7 @@ void main (void){
    initUSART();
    initADC();
   _delay_ms(500);
-  uart_Message("LM35 Temperature Sensor\n\r");
+  usart_Message("LM35 Temperature Sensor\n\r");
 //  usart_Init();
   while(1){
     voltage = readADC(ADC0);
@@ -115,12 +113,7 @@ void main (void){
     usart_Transmit('C');
     usart_Transmit('\n');
     usart_Transmit('\r');
-    //usart_Transmit('V');
-    //usart_Transmit((uint8_t)48+5); 48==0 ascii
-    //uart_Message((uint8_t)readADC(ADC0)>>8);
-    //usart_Transmit((uint8_t) readADC(0)>>8);
-    //usart_Transmit('C');
-        _delay_ms(2000);
+   _delay_ms(2000);
 
   }
 
