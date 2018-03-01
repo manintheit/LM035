@@ -6,8 +6,9 @@
   #define BAUD 9600
 #endif
 #define MYUBRR  (F_CPU/(16UL * BAUD)) - 1
-#define ADC0 0xF0
-#define ADC1 0xF1
+//ADC channels for more information see Atmega328p datasheet.
+#define ADC0 0x00
+#define ADC1 0x01
 #define AVCC 5000 //5V = 5000mV
 #define PRECISION 1024
 #define T (AVCC/PRECISION)
