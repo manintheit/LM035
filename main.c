@@ -107,6 +107,8 @@ void main (void){
     val2 = voltage / 10;
     val3 = voltage % 10;
   }
+    //Decimal 48=0 Decimal 49=1  Decimal 50 =2 For more information see ASCII table. 
+    
     usart_Transmit(val1 + 48);
     usart_Transmit(val2 + 48);
     usart_Transmit(val3 + 48);
